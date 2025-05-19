@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "379331ef-5709-4327-b610-77f2d014e7c4",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "Icon_BossDungeon": {
+      "ver": "1.0.4",
+      "uuid": "82579fc6-c9ba-4cf5-9308-b10376daf088",
+      "rawTextureUuid": "379331ef-5709-4327-b610-77f2d014e7c4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 211,
+      "height": 194,
+      "rawWidth": 211,
+      "rawHeight": 194,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "a310b9dd-6113-47d7-ade7-5b307b851982",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "BackGround_Sample_04_Character_1920": {
+      "ver": "1.0.4",
+      "uuid": "127023d9-8155-4764-9b13-449aa3f41ca3",
+      "rawTextureUuid": "a310b9dd-6113-47d7-ade7-5b307b851982",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1920,
+      "height": 1080,
+      "rawWidth": 1920,
+      "rawHeight": 1080,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

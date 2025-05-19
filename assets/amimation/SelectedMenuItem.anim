@@ -1,0 +1,26 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "SelectedMenuItem",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.3333333333333333,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 54,
+  "curveData": {
+    "props": {
+      "scale": [],
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 120
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": 225
+        }
+      ]
+    }
+  },
+  "events": []
+}

@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "b33e82df-691c-4132-a088-a1f7475ae99f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "IconSet_Role_Warrior": {
+      "ver": "1.0.4",
+      "uuid": "d585f9ac-1b02-4bdd-ae09-4bacfd5fe99a",
+      "rawTextureUuid": "b33e82df-691c-4132-a088-a1f7475ae99f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 73,
+      "height": 73,
+      "rawWidth": 73,
+      "rawHeight": 73,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

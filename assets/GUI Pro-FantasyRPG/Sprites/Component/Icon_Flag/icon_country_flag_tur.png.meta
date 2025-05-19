@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "9ddd2412-08a2-450b-bf04-518c151114d1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "icon_country_flag_tur": {
+      "ver": "1.0.4",
+      "uuid": "9bbd19fc-c792-4e60-aa10-4f875f237f3b",
+      "rawTextureUuid": "9ddd2412-08a2-450b-bf04-518c151114d1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 53,
+      "height": 56,
+      "rawWidth": 53,
+      "rawHeight": 56,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
