@@ -2252,7 +2252,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 45,
+      "x": 33,
       "y": -45,
       "z": 0
     },
@@ -2436,7 +2436,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 120,
+      "x": 100,
       "y": 0,
       "z": 0
     },
@@ -4257,7 +4257,9 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "6fb7a1fd-9aac-4b89-a728-0053dd7f7d2f"
+    },
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
