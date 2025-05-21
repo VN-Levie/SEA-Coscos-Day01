@@ -29,15 +29,15 @@ cc.Class({
     playBGM() {
 
         console.log("playBGM");
-        audioClipBGM = cc.audioEngine.play(this.audioClipBGM, true, 0.5);
-        cc.audioEngine.setVolume(audioClipBGM, 0.5);
+       var myAudioClipBGM = cc.audioEngine.play(this.audioClipBGM, true, 0.5);
+        cc.audioEngine.setVolume(myAudioClipBGM, 0.5);
         
     },
 
     playClick() {
         console.log("playClick");
-        audioClipClick = cc.audioEngine.play(this.audioClipClick, false, 1);
-        cc.audioEngine.setVolume(audioClipClick, 1);
+        var mayAudioClipClick = cc.audioEngine.play(this.audioClipClick, false, 1);
+        cc.audioEngine.setVolume(mayAudioClipClick, 1);
 
     },
 
