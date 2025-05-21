@@ -12,22 +12,32 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        backgroundMusicClip: {
+            type: cc.AudioClip,
+            default: null
+        },
+        buttonClickAudioClip: {
+            type: cc.AudioClip,
+            default: null
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
     onLoad() {
-        playBGM();
+        this.playBGM();
     },
     playBGM() {
 
         console.log("playBGM");
-        
+        var myAudioClipBGM = cc.audioEngine.play(this.backgroundMusicClip, true, 0.5);
+        cc.audioEngine.setVolume(myAudioClipBGM, 0.5);
+
     },
 
     playClick() {
         console.log("playClick");
-        cc.audioEngine.playEffect(this.clickAudio, false);
+        var mayAudioClipClick = cc.audioEngine.play(this.buttonClickAudioClip, false, 1);
+        cc.audioEngine.setVolume(mayAudioClipClick, 1);
 
     },
 
