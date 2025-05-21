@@ -1,4 +1,4 @@
-# NewProject_3 - Cocos Creator Project
+Cocos Creator Project
 
 This is a project created with Cocos Creator version 2.1.3.
 
