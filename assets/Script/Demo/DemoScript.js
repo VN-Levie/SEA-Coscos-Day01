@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -51,7 +41,7 @@ cc.Class({
 
     onLoad() {
         console.log('Game Load');
-        
+
         this.lblMessage.string = "Hello Cocos from Vscode!";
         this.lblMessage.node.color = cc.Color.RED;
         this.lblMessage.node.anchorX = 0;
@@ -64,16 +54,17 @@ cc.Class({
         this.lblMessage.node.active = true;
         this.iconSprite.spriteFrame = this.spriteFrame;
 
-        
-       
 
-        cc.audioEngine.play(this.bgmClip, true, 1);
+
+
+        // cc.audioEngine.play(this.bgmClip, true, 1);
+        // this.playBGM();
     },
 
     start() {
         console.log('Game Start');
-        
-        setInterval(() => {
+
+        this.schedule(() => {
             this.lblMessage.font = this.lblMessage.font == this.alataRegular ? this.josefinSansBold : this.alataRegular;
             this.lblMessage.node.color = this.lblMessage.node.color == cc.Color.RED ? cc.Color.BLUE : cc.Color.RED;
             // this.lblMessage.node.scale = this.lblMessage.node.scale == 1 ? 2 : 1;
@@ -81,11 +72,29 @@ cc.Class({
             // this.lblMessage.node.angle = this.lblMessage.node.angle == 0 ? 45 : 0;
             // this.lblMessage.node.x = Math.random() * 100 - 50;
             // this.lblMessage.node.y = Math.random() * 100 - 50;
-            console.log("Change font");
-
-        }
-            , 1000);
+            // console.log("Change font");
+        }, 1);
     },
+    playBGM() {
+        console.log("playBGM");
+        if (this.bgmId !== undefined && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING) {
+            console.log("BGM is already playing");
+            return;
+        }
+
+        this.bgmId = cc.audioEngine.play(this.bgmClip, true, 0.5);
+        cc.audioEngine.setVolume(this.bgmId, 0.5);
+    },
+
+
+    stopBGM() {
+        if (this.bgmId !== undefined) {
+            cc.audioEngine.stop(this.bgmId);
+            this.bgmId = undefined;
+        } else {
+            console.log("BGM is not playing");
+        }
+    }
 
     // update (dt) {},
 });
