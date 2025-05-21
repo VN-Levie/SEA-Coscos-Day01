@@ -12,11 +12,11 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        audioClipBGM: {
+        backgroundMusicClip: {
             type: cc.AudioClip,
             default: null
         },
-        audioClipClick: {
+        buttonClickAudioClip: {
             type: cc.AudioClip,
             default: null
         },
@@ -29,14 +29,14 @@ cc.Class({
     playBGM() {
 
         console.log("playBGM");
-       var myAudioClipBGM = cc.audioEngine.play(this.audioClipBGM, true, 0.5);
+        var myAudioClipBGM = cc.audioEngine.play(this.backgroundMusicClip, true, 0.5);
         cc.audioEngine.setVolume(myAudioClipBGM, 0.5);
-        
+
     },
 
     playClick() {
         console.log("playClick");
-        var mayAudioClipClick = cc.audioEngine.play(this.audioClipClick, false, 1);
+        var mayAudioClipClick = cc.audioEngine.play(this.buttonClickAudioClip, false, 1);
         cc.audioEngine.setVolume(mayAudioClipClick, 1);
 
     },

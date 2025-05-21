@@ -428,10 +428,10 @@
       "__id__": 8
     },
     "_enabled": true,
-    "audioClipBGM": {
+    "backgroundMusicClip": {
       "__uuid__": "652e2550-de0a-42f3-9344-18fcfcf4f9fd"
     },
-    "audioClipClick": {
+    "buttonClickAudioClip": {
       "__uuid__": "cb65b390-b99f-4d30-9597-5623ab009c77"
     },
     "_id": "3b9oMoxOVJN4v/zyuSH6+6"
