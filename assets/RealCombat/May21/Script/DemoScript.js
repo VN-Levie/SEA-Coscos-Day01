@@ -40,6 +40,20 @@ cc.Class({
             default: null,
             type: cc.Font,
         },
+
+        bgmButton: {
+            default: null,
+            type: cc.Button,
+            displayName: "BGM Toggle Button",
+            tooltip: "Button to toggle background music",
+        },
+
+        bgmButtonLabel: {
+            default: null,
+            type: cc.Label,
+            displayName: "BGM Button Label",
+            tooltip: "Label for the BGM toggle button",
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -59,11 +73,19 @@ cc.Class({
         this.lblMessage.node.active = true;
         this.iconSprite.spriteFrame = this.spriteFrame;
 
+        // if (this.bgmButton) {
+        //     this.bgmButton.node.on('click', this.toggleBGM, this);
+        // }
 
+        if (this.bgmButtonLabel) {
+            // Assuming BGM is initially off
+            if (this.bgmId !== undefined && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING) {
+                this.bgmButtonLabel.string = "Stop BGM";
+            } else {
+                this.bgmButtonLabel.string = "Play BGM";
+            }
+        }
 
-
-        // cc.audioEngine.play(this.bgmClip, true, 1);
-        // this.playBGM();
     },
 
     start() {
@@ -81,14 +103,24 @@ cc.Class({
         }, 1);
     },
     playBGM() {
-        console.log("playBGM");
-        if (this.bgmId !== undefined && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING) {
-            console.log("BGM is already playing");
+        console.log("playBGM");        
+        if (!this.bgmClip || (this.bgmId !== undefined && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING)) {
+            if (!this.bgmClip) {
+                console.log("BGM clip is not assigned.");
+            } else {
+                console.log("BGM is already playing");
+            }
             return;
         }
 
         this.bgmId = cc.audioEngine.play(this.bgmClip, true, 0.5);
-        cc.audioEngine.setVolume(this.bgmId, 0.5);
+        if (this.bgmId !== cc.audioEngine.INVALID_AUDIO_ID) {
+            cc.audioEngine.setVolume(this.bgmId, 0.5);
+            console.log("BGM started playing with ID:", this.bgmId);
+        } else {
+            console.error("Failed to play BGM.");
+            this.bgmId = undefined;
+        }
     },
 
     playClick() {
@@ -100,11 +132,35 @@ cc.Class({
 
 
     stopBGM() {
-        if (this.bgmId !== undefined) {
+        if (this.bgmId !== undefined && this.bgmId !== cc.audioEngine.INVALID_AUDIO_ID) {
             cc.audioEngine.stop(this.bgmId);
+            console.log("BGM stopped");
             this.bgmId = undefined;
         } else {
-            console.log("BGM is not playing");
+            console.log("BGM is not playing or bgmId is invalid");
+        }
+    },
+
+    toggleBGM() {
+        console.log("toggleBGM");
+        if (this.bgmId !== undefined && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING) {
+            console.log("Stopping BGM");
+            this.stopBGM();
+            if (this.bgmButtonLabel) {
+                this.bgmButtonLabel.string = "Play BGM";
+            }
+        } else {
+            console.log("Playing BGM");
+            this.playBGM();
+            if (this.bgmId !== undefined && this.bgmId !== cc.audioEngine.INVALID_AUDIO_ID && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING) {
+                if (this.bgmButtonLabel) {
+                    this.bgmButtonLabel.string = "Stop BGM";
+                }
+            } else {
+                if (this.bgmButtonLabel) {
+                    this.bgmButtonLabel.string = "Play BGM";
+                }
+            }
         }
     }
 
