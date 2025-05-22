@@ -1,0 +1,27 @@
+# Các khái niệm **Wrap Mode**, **Filter Mode**, **Premultiply Alpha** và **Auto Atlas** trong phát triển game
+
+Trong phát triển game (đặc biệt là game 2D), chúng ta thường dùng các hình ảnh (texture) để vẽ nhân vật, vật thể. Một số khái niệm kỹ thuật về ảnh có thể khá khó hiểu với người mới, nhưng giải thích đơn giản thì không phức tạp. Trong Cocos Creator hay phát triển game nói chung, có những khái niệm quan trọng như **Wrap Mode**, **Filter Mode**, **Premultiply Alpha** và **Auto Atlas**. Bài viết này sẽ trình bày những khái niệm đó một cách sinh động, dễ hiểu, giúp bạn nắm bắt lý do chúng quan trọng.
+
+## Wrap Mode
+
+*Wrap Mode* quy định cách thức xử lý khi một hình ảnh (texture) được áp lên một không gian lớn hơn ảnh gốc. Nói đơn giản, nếu ảnh gốc nhỏ mà ta dùng làm nền lớn, Wrap Mode sẽ chỉ định cách tính màu cho phần ảnh nằm ngoài biên ảnh gốc. Trong Cocos Creator, Wrap Mode có thể chọn các chế độ như *Repeat* (lặp ảnh) hoặc *Clamp-to-edge* (kéo căng viền). Với *Repeat*, ảnh gốc sẽ được sao chép lặp đi lặp lại để lấp đầy vùng ngoài biên, giống như lát gạch hoa văn liên tục. Ví dụ, khi muốn tạo nền cỏ hoặc trời xanh trông vô tận, ta có thể dùng Repeat để tấm hình được lặp đến vô hạn. Ngược lại, *Clamp-to-edge* giữ nguyên phần ảnh bên trong và chỉ kéo dài màu tại mép ảnh ra ngoài (như khi phóng to một bức tranh nhỏ, các cạnh ảnh được dãn ra chứ không lặp lại). Ngoài ra còn có *Mirrored-repeat*, tức lặp ảnh xen kẽ với việc lật gương mỗi lần lặp, tạo hiệu ứng đối xứng qua mỗi lần lặp.
+
+Trong thực tế, việc chọn Wrap Mode phù hợp giúp tránh các hiện tượng không mong muốn khi hiển thị. Ví dụ, dùng *Repeat* cho nền liên tục sẽ tiết kiệm được độ lớn của ảnh gốc mà vẫn cho cảm giác liền mạch, còn dùng *Clamp* cho sprite có viền trong suốt thì sẽ tránh việc tạo ra các vùng thừa không có nghĩa. Chọn Wrap Mode hợp lý cũng góp phần giảm số lần vẽ ảnh (draw calls) trong trường hợp lặp hình nền.
+
+## Filter Mode
+
+*Filter Mode* (chế độ lọc) xác định cách máy tính chọn màu khi một ảnh bị phóng to (zoom in) hoặc thu nhỏ (zoom out). Cocos Creator hỗ trợ ba chế độ: *Point* (còn gọi là *Nearest*), *Bilinear* và *Trilinear*. Ở chế độ *Point/Nearest*, mỗi điểm ảnh mới sẽ lấy đúng màu của pixel gần nhất trong ảnh gốc, không pha trộn màu với các pixel xung quanh. Kết quả là khi phóng to ảnh, bạn sẽ thấy rõ từng ô vuông pixel (giống đồ họa cổ điển) vì không có phép làm mượt giữa các điểm. Ngược lại, *Bilinear* sẽ lấy trung bình màu của 4 pixel lân cận để làm mịn ảnh, vì thế khi zoom ảnh sẽ mềm mại hơn, nhưng các cạnh có thể hơi nhòe nếu ảnh có nhiều chi tiết nhỏ. *Trilinear* là phiên bản nâng cao của Bilinear, kết hợp thêm việc dùng nhiều cấp ảnh thu nhỏ (mipmap) để giảm hiện tượng răng cưa khi nhìn vật ở xa.  Tóm lại, với phong cách đồ họa pixel art thường chọn *Point* để giữ nét vuông vắn, còn với ảnh vẽ tay hoặc 3D thì dùng *Bilinear/Trilinear* để hình ảnh mượt mà hơn.
+
+## Premultiply Alpha
+
+*Premultiply Alpha* (nhân trước kênh alpha) là cách lưu trữ màu của ảnh sao cho các kênh màu RGB đã được nhân trước với độ trong suốt (alpha) khi lưu. Ví dụ, một pixel màu đỏ nguyên (255, 0, 0) với độ trong suốt 50% sẽ được lưu thành (127, 0, 0, 0.5) khi bật premultiply (vì 255×0.5=127), trong khi nếu không dùng premultiply thì nó vẫn được lưu là (255, 0, 0, 0.5). Cách xử lý này giúp đơn giản hóa phép pha trộn màu khi hiển thị, vì màu đã được tính sẵn trước khi vẽ. Quan trọng hơn, nếu không dùng premultiply, việc nội suy màu (khi phóng to/thu nhỏ hoặc blend ảnh) có thể cho ra kết quả sai – thường thấy viền đen hoặc điểm màu lỗi ở các vùng trong suốt. Kích hoạt *Premultiply Alpha* giúp đảm bảo rằng các cạnh trong suốt được xử lý mượt mà hơn và ảnh hưởng của độ trong suốt lên màu sắc được tính toán chính xác hơn. Nói cách khác, premultiply tránh cho các vùng trong suốt không bị “lem” màu lên các pixel xung quanh khi vẽ ảnh lên nền.
+
+## Auto Atlas (Sprite Atlas)
+
+Trong game 2D thường có rất nhiều sprite (ảnh nhỏ) khác nhau, ví dụ nhân vật, hiệu ứng, giao diện… *Sprite Atlas* (hay sprite sheet) là khái niệm gom nhiều ảnh nhỏ vào chung một ảnh lớn để cùng vẽ. Cocos Creator có tính năng *Auto Atlas* tự động đóng gói (pack) các ảnh trong cùng một thư mục thành một sprite sheet lớn khi build game. Ví dụ, nếu bạn có nhiều file PNG nhỏ trong một thư mục (như hình các khung animation của nhân vật), Cocos sẽ tự động gộp toàn bộ chúng thành một ảnh lớn duy nhất trong quá trình biên dịch. Việc này giúp game engine chỉ cần tải một tấm texture để vẽ nhiều sprite khác nhau, thay vì phải liên tục đổi qua lại nhiều ảnh nhỏ. Nhờ vậy, số lần gọi vẽ (draw calls) và chi phí đổi bộ nhớ (texture binds) giảm đáng kể, tiết kiệm tài nguyên và tăng tốc độ render. Tóm lại, Auto Atlas (sprite atlas) giúp cải thiện hiệu suất game bằng cách dùng một bảng ảnh duy nhất cho nhiều đối tượng khác nhau, nhờ đó game chạy mượt mà hơn.
+
+## Tổng kết
+
+Hiểu rõ các khái niệm trên sẽ giúp bạn điều khiển tốt hơn chất lượng hình ảnh và hiệu năng của game. **Wrap Mode** và **Filter Mode** ảnh hưởng trực tiếp đến cách ảnh được lặp hoặc được lọc mượt khi phóng to/thu nhỏ. **Premultiply Alpha** đảm bảo quá trình pha trộn màu với các ảnh trong suốt diễn ra chính xác, tránh các điểm màu sai hoặc viền đen không mong muốn. Còn **Auto Atlas** (sprite atlas) là công cụ giúp gom nhiều ảnh nhỏ thành một, giảm số lần gọi vẽ và tiết kiệm tài nguyên cho game. Nắm vững những khái niệm này sẽ giúp bạn thiết kế đồ họa trong game vừa đẹp mắt vừa chạy hiệu quả.
+
+**Nguồn tham khảo:** Tài liệu chính thức của Cocos Creator về Texture và Auto Atlas.
