@@ -48,7 +48,7 @@
     "_is3DNode": true,
     "groupIndex": 0,
     "autoReleaseAssets": false,
-    "_id": "054a8987-226b-49b8-b784-cc73aed39c0a"
+    "_id": "b6c74379-5256-49cf-8b3b-224e6893892e"
   },
   {
     "__type__": "cc.Node",
@@ -69,7 +69,7 @@
     "_level": 0,
     "_components": [
       {
-        "__id__": 39
+        "__id__": 42
       }
     ],
     "_prefab": null,
@@ -153,7 +153,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 554.2562584220408
+      "z": 365.46272039703314
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -232,10 +232,10 @@
         "__id__": 24
       },
       {
-        "__id__": 33
+        "__id__": 36
       },
       {
-        "__id__": 36
+        "__id__": 39
       }
     ],
     "_active": true,
@@ -387,6 +387,15 @@
     "_components": [
       {
         "__id__": 9
+      },
+      {
+        "__id__": 33
+      },
+      {
+        "__id__": 34
+      },
+      {
+        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -433,7 +442,7 @@
     "_id": "05v28BYCpMAbvsdSGNC8Mi"
   },
   {
-    "__type__": "750ddyod2NAsqBn/jrnxNyE",
+    "__type__": "f521fNwlPpEO674CcvKFNAP",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -447,7 +456,7 @@
       "__id__": 14
     },
     "spriteFrame": {
-      "__uuid__": "6fb7a1fd-9aac-4b89-a728-0053dd7f7d2f"
+      "__uuid__": "5ad3134e-4a9a-4600-814f-9dc018a0592a"
     },
     "bgmClip": {
       "__uuid__": "652e2550-de0a-42f3-9344-18fcfcf4f9fd"
@@ -470,7 +479,7 @@
     "clickCountLabel": {
       "__id__": 22
     },
-    "_id": "4bQ72Tgu9N+ZpSfsbHXViw"
+    "_id": "e5WYvjnxNBSYKQ+QQdF5Ji"
   },
   {
     "__type__": "cc.Label",
@@ -1034,7 +1043,7 @@
       "__id__": 8
     },
     "component": "",
-    "_componentId": "750ddyod2NAsqBn/jrnxNyE",
+    "_componentId": "f521fNwlPpEO674CcvKFNAP",
     "handler": "toggleBGM",
     "customEventData": ""
   },
@@ -1479,7 +1488,7 @@
       "__id__": 8
     },
     "component": "",
-    "_componentId": "750ddyod2NAsqBn/jrnxNyE",
+    "_componentId": "f521fNwlPpEO674CcvKFNAP",
     "handler": "playClick",
     "customEventData": ""
   },
@@ -1507,6 +1516,36 @@
     "_id": "4cLjsCbCBDaYtugqflTEWb"
   },
   {
+    "__type__": "a2f94+TE1xFfoGbNjD4mkzQ",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "_id": "2bYRVUpyZE5pu/KSPMhpT2"
+  },
+  {
+    "__type__": "39ddfM/dpFMnKWfdkty0oZt",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "_id": "31tvZt5ZtPwaCP+SWwDRrJ"
+  },
+  {
+    "__type__": "6311ekgFdhHYI08Rpjk+iui",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "_id": "84EPsxf+JImaFFEAumRaNY"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "BaseRotateNode",
     "_objFlags": 0,
@@ -1518,10 +1557,10 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 34
+        "__id__": 37
       },
       {
-        "__id__": 35
+        "__id__": 38
       }
     ],
     "_prefab": null,
@@ -1572,7 +1611,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 33
+      "__id__": 36
     },
     "_enabled": true,
     "_materials": [
@@ -1600,15 +1639,15 @@
     "_id": "6fqhQNMQhASYxgqOMgjNdm"
   },
   {
-    "__type__": "779b7V3405By4pq+rRM70/3",
+    "__type__": "98fccPIpCdAM59gOI1k37cM",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 33
+      "__id__": 36
     },
     "_enabled": true,
     "speed": 60,
-    "_id": "39xsdgABxIrJeHWIZD2gp0"
+    "_id": "eeau9rnBhMC7XthnD3uJqe"
   },
   {
     "__type__": "cc.Node",
@@ -1622,10 +1661,10 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 37
+        "__id__": 40
       },
       {
-        "__id__": 38
+        "__id__": 41
       }
     ],
     "_prefab": null,
@@ -1676,7 +1715,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 39
     },
     "_enabled": true,
     "_materials": [
@@ -1704,15 +1743,15 @@
     "_id": "5cRyThUExK76JWvUOp6GEH"
   },
   {
-    "__type__": "839a2XCPzNPEpY4lm7UXqwF",
+    "__type__": "fe483TofQRLqocyULwB+1On",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 39
     },
     "_enabled": true,
     "speed": 60,
-    "_id": "fdYXzdVGtLdZfxMMXCU11l"
+    "_id": "b3xH9RqSJO8pq5M97Ujd6m"
   },
   {
     "__type__": "cc.Canvas",
