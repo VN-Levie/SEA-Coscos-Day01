@@ -1,4 +1,4 @@
-var config = require("config");
+var config = require("ConfigScript");
 
 cc.Class({
     extends: cc.Component,
