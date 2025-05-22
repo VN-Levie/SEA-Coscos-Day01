@@ -1,4 +1,4 @@
-var BaseRotate = require("BaseRotate");
+var BaseRotate = require("BaseRotateScript");
 
 cc.Class({
     extends: BaseRotate,

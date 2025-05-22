@@ -433,7 +433,7 @@
     "_id": "05v28BYCpMAbvsdSGNC8Mi"
   },
   {
-    "__type__": "92acdz96t1G26LVTqCB/zgQ",
+    "__type__": "750ddyod2NAsqBn/jrnxNyE",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -447,7 +447,7 @@
       "__id__": 14
     },
     "spriteFrame": {
-      "__uuid__": "c9fecd77-016d-4b05-8e7a-0f6c915e7d02"
+      "__uuid__": "6fb7a1fd-9aac-4b89-a728-0053dd7f7d2f"
     },
     "bgmClip": {
       "__uuid__": "652e2550-de0a-42f3-9344-18fcfcf4f9fd"
@@ -470,7 +470,7 @@
     "clickCountLabel": {
       "__id__": 22
     },
-    "_id": "6bFGdrL+ZAjJuMf1S3WDAx"
+    "_id": "4bQ72Tgu9N+ZpSfsbHXViw"
   },
   {
     "__type__": "cc.Label",
@@ -1034,7 +1034,7 @@
       "__id__": 8
     },
     "component": "",
-    "_componentId": "92acdz96t1G26LVTqCB/zgQ",
+    "_componentId": "750ddyod2NAsqBn/jrnxNyE",
     "handler": "toggleBGM",
     "customEventData": ""
   },
@@ -1479,7 +1479,7 @@
       "__id__": 8
     },
     "component": "",
-    "_componentId": "92acdz96t1G26LVTqCB/zgQ",
+    "_componentId": "750ddyod2NAsqBn/jrnxNyE",
     "handler": "playClick",
     "customEventData": ""
   },
