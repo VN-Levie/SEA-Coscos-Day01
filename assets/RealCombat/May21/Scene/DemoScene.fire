@@ -69,7 +69,7 @@
     "_level": 0,
     "_components": [
       {
-        "__id__": 30
+        "__id__": 33
       }
     ],
     "_prefab": null,
@@ -229,7 +229,7 @@
         "__id__": 16
       },
       {
-        "__id__": 22
+        "__id__": 24
       }
     ],
     "_active": true,
@@ -460,6 +460,9 @@
     },
     "bgmButtonLabel": {
       "__id__": 20
+    },
+    "clickCountLabel": {
+      "__id__": 22
     },
     "_id": "73MbM0bP5K97LL3s8oB6FY"
   },
@@ -1030,25 +1033,51 @@
     "customEventData": ""
   },
   {
-    "__type__": "cc.Node",
-    "_name": "ClickNode",
+    "__type__": "cc.Label",
+    "_name": "",
     "_objFlags": 0,
-    "_parent": {
-      "__id__": 5
+    "node": {
+      "__id__": 23
     },
-    "_children": [
+    "_enabled": true,
+    "_materials": [
       {
-        "__id__": 23
-      },
-      {
-        "__id__": 25
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
+    "_useOriginalSize": false,
+    "_string": "Clicks: 0",
+    "_N$string": "Clicks: 0",
+    "_fontSize": 40,
+    "_lineHeight": 40,
+    "_enableWrapText": true,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_batchAsBitmap": false,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1,
+    "_N$fontFamily": "Arial",
+    "_N$overflow": 0,
+    "_N$cacheMode": 0,
+    "_id": "bcVpaKscJLYbe/2xApM8+z"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "ClicksLabel",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 24
+    },
+    "_children": [],
     "_active": true,
-    "_level": 2,
+    "_level": 3,
     "_components": [
       {
-        "__id__": 28
+        "__id__": 22
+      },
+      {
+        "__id__": 32
       }
     ],
     "_prefab": null,
@@ -1062,7 +1091,75 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
+      "width": 151.13,
+      "height": 50.4
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -95.186,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "groupIndex": 0,
+    "_id": "9eCwgttllIzJa56t3y0tgv"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "ClickNode",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 5
+    },
+    "_children": [
+      {
+        "__id__": 25
+      },
+      {
+        "__id__": 27
+      },
+      {
+        "__id__": 23
+      }
+    ],
+    "_active": true,
+    "_level": 2,
+    "_components": [
+      {
+        "__id__": 30
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 500,
       "height": 200
     },
     "_anchorPoint": {
@@ -1099,14 +1196,14 @@
     "_name": "ButtonSprite",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 22
+      "__id__": 24
     },
     "_children": [],
     "_active": true,
     "_level": 3,
     "_components": [
       {
-        "__id__": 24
+        "__id__": 26
       }
     ],
     "_prefab": null,
@@ -1157,7 +1254,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 23
+      "__id__": 25
     },
     "_enabled": true,
     "_materials": [
@@ -1186,20 +1283,20 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "CheckLabel",
+    "_name": "ClickMeLabel",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 22
+      "__id__": 24
     },
     "_children": [],
     "_active": true,
     "_level": 3,
     "_components": [
       {
-        "__id__": 26
+        "__id__": 28
       },
       {
-        "__id__": 27
+        "__id__": 29
       }
     ],
     "_prefab": null,
@@ -1250,7 +1347,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 25
+      "__id__": 27
     },
     "_enabled": true,
     "_materials": [
@@ -1280,7 +1377,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 25
+      "__id__": 27
     },
     "_enabled": true,
     "_color": {
@@ -1303,14 +1400,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 22
+      "__id__": 24
     },
     "_enabled": true,
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
       {
-        "__id__": 29
+        "__id__": 31
       }
     ],
     "_N$interactable": true,
@@ -1366,7 +1463,7 @@
     "hoverSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 23
+      "__id__": 25
     },
     "_id": "e4DgDjmMVLyrFQNhQSNYXw"
   },
@@ -1379,6 +1476,29 @@
     "_componentId": "cfefeLo7PlJfLaHXE1PPGMj",
     "handler": "playClick",
     "customEventData": ""
+  },
+  {
+    "__type__": "cc.LabelShadow",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 23
+    },
+    "_enabled": true,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": 2
+    },
+    "_blur": 2,
+    "_id": "4cLjsCbCBDaYtugqflTEWb"
   },
   {
     "__type__": "cc.Canvas",

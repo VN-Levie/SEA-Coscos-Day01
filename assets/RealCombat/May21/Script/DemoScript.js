@@ -54,6 +54,13 @@ cc.Class({
             displayName: "BGM Button Label",
             tooltip: "Label for the BGM toggle button",
         },
+
+        clickCountLabel: {
+            default: null,
+            type: cc.Label,
+            displayName: "Click Count Label",
+            tooltip: "Label to display the number of clicks",
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -77,13 +84,17 @@ cc.Class({
         //     this.bgmButton.node.on('click', this.toggleBGM, this);
         // }
 
-        if (this.bgmButtonLabel) {
-            // Assuming BGM is initially off
+        if (this.bgmButtonLabel) {           
             if (this.bgmId !== undefined && cc.audioEngine.getState(this.bgmId) === cc.audioEngine.AudioState.PLAYING) {
                 this.bgmButtonLabel.string = "Stop BGM";
             } else {
                 this.bgmButtonLabel.string = "Play BGM";
             }
+        }
+
+        this._numberOfClicks = 0;
+        if (this.clickCountLabel) {
+            this.clickCountLabel.string = "Clicks: 0";
         }
 
     },
@@ -124,10 +135,22 @@ cc.Class({
     },
 
     playClick() {
-        console.log("playClick");
+        console.log("playClick");       
+        if (this.clipClip) {
+            this.clickId = cc.audioEngine.play(this.clipClip, false, 1);
+            if (this.clickId !== cc.audioEngine.INVALID_AUDIO_ID) {
+                cc.audioEngine.setVolume(this.clickId, 1);
 
-        this.clickId = cc.audioEngine.play(this.clipClip, false, 1);
-        cc.audioEngine.setVolume(this.clickId, 1);
+                this._numberOfClicks++;
+                if (this.clickCountLabel) {
+                    this.clickCountLabel.string = "Clicks: " + this._numberOfClicks;
+                }
+            } else {
+                console.error("Failed to play click sound.");
+            }
+        } else {
+            console.warn("clipClip is not assigned. Cannot play click sound.");
+        }
     },
 
 
