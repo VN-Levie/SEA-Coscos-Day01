@@ -4,14 +4,7 @@ This is a project created with Cocos Creator version 2.1.3.
 
 ## Overview
 
-This project is a basic template, including:
-
-* A main scene named `Lobby.fire` located in the `assets/Scene` folder.
-* Various animation files (e.g., `CharacterBreathingAmin.anim`, `FadeAmin.anim`, `FlashAmin.anim`, `FloatAmin.anim`, `FloatReverseAmin.anim`, `PlayButtonAnim.anim`, `PlayButtonAnimNew.anim`, `QuestLight.anim`, `SelectedMenuItem.anim`, `SettingAnim.anim`, `SettingsAnimOverlay.anim`, `StarIconRunAmin.anim`) in the `assets/Amimation` folder.
-* Font files and assets (e.g., `Alata-Regular SDF.asset`, `Alata-Regular.ttf`, `JosefinSans-Bold SDF.asset`, `JosefinSans-Bold.ttf`) in the `assets/Fonts` folder.
-* Sprite assets organized into subfolders like `Background/`, `Character/`, and `Component/` within the `assets/Sprites` folder.
-* A custom script `SoundController.js` in the `assets/Script` folder.
-* Sound files like `bgm.mp3`, `click.mp3`, and `coin_counting.mp3` in the `assets/Sound` folder.
+This project is a basic game template created with Cocos Creator version 2.1.3. It serves as a starting point for game development and includes essential assets and a pre-configured main scene. The project features various animations, font resources, sprite assets for characters and UI components, a custom sound controller script, and a collection of sound effects and background music. The main game scene is `Lobby.fire`, which can be run to preview the basic setup.
 
 ## Screenshot
 
