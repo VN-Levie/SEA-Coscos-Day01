@@ -24,14 +24,26 @@ This project is a basic template, including:
 
 ## Project Structure
 
-The `assets` folder contains the following main subdirectories:
-
-* `Amimation/`: Contains animation files like `QuestLight.anim`, `SelectedMenuItem.anim`, `charZoomInt.anim`, `fade.anim`, `flash.anim`, `float.anim`, `floatReverse.anim`, `playBtnAnim.anim`, `playBtnAnim_2.anim`, `settingsAnim.anim`, `settingsAnimOverlay.anim`, and `startRun.anim`.
-* `Fonts/`: Includes font resources such as `Alata-Regular.ttf`, `JosefinSans-Bold.ttf`, and their corresponding SDF assets.
-* `Scene/`: Holds the game scenes, currently with `Lobby.fire`.
-* `Script/`: Contains custom game logic scripts, including `SoundController.js`.
-* `Sound/`: Stores sound effect and background music files like `bgm.mp3`, `click.mp3`, and `coin_counting.mp3`.
-* `Sprites/`: Stores image assets, categorized into `Background/`, `Character/`, and `Component/`.
+```bash
+SEA-Coscos-Project/
+├── README.md
+├── assets/
+│   ├── Amimation/              # Animation files
+│   ├── Fonts/                  # Font files
+│   ├── RealCombat/             # Real Combat assets
+│   │   └── May21/              # May 21 assets
+│   ├── Scene/                  # Scene files
+│   ├── Script/                 # Script files
+│   ├── Sound/                  # Sound files
+│   └── Sprites/                # Sprite assets
+├── researchs/                  # Research files
+│   └── may21/                  # May 21 research
+├── creator.d.ts   
+├── jsconfig.json
+├── project.json
+├── template-banner.png
+└── template.json
+```
 
 ## Version Information
 
