@@ -24,7 +24,7 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
     onLoad() {
-        this.playBGM();
+        // this.playBGM();
     },
     playBGM() {
 
