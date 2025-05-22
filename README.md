@@ -14,7 +14,7 @@ This project is a basic template, including:
 
 ## Screenshot
 
-![Screenshot](https://github.com/VN-Levie/SEA-Coscos-Day01/blob/main/Screenshot/screenshot.png?raw=true)
+![Screenshot](https://github.com/VN-Levie/SEA-Coscos-Project/blob/main/screenshot/screenshot.png?raw=true)
 
 ## How to Get Started
 
