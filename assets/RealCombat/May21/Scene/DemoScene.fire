@@ -48,7 +48,7 @@
     "_is3DNode": true,
     "groupIndex": 0,
     "autoReleaseAssets": false,
-    "_id": "f47a44d5-e5ca-4190-add9-ce0459020cc4"
+    "_id": "771ba7be-49d2-474d-a0ea-bab607b1d8d9"
   },
   {
     "__type__": "cc.Node",
@@ -69,7 +69,7 @@
     "_level": 0,
     "_components": [
       {
-        "__id__": 42
+        "__id__": 39
       }
     ],
     "_prefab": null,
@@ -232,10 +232,10 @@
         "__id__": 24
       },
       {
-        "__id__": 36
+        "__id__": 33
       },
       {
-        "__id__": 39
+        "__id__": 36
       }
     ],
     "_active": true,
@@ -387,15 +387,6 @@
     "_components": [
       {
         "__id__": 9
-      },
-      {
-        "__id__": 33
-      },
-      {
-        "__id__": 34
-      },
-      {
-        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -442,7 +433,7 @@
     "_id": "05v28BYCpMAbvsdSGNC8Mi"
   },
   {
-    "__type__": "cfefeLo7PlJfLaHXE1PPGMj",
+    "__type__": "92acdz96t1G26LVTqCB/zgQ",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -456,7 +447,7 @@
       "__id__": 14
     },
     "spriteFrame": {
-      "__uuid__": "6fb7a1fd-9aac-4b89-a728-0053dd7f7d2f"
+      "__uuid__": "c9fecd77-016d-4b05-8e7a-0f6c915e7d02"
     },
     "bgmClip": {
       "__uuid__": "652e2550-de0a-42f3-9344-18fcfcf4f9fd"
@@ -479,7 +470,7 @@
     "clickCountLabel": {
       "__id__": 22
     },
-    "_id": "73MbM0bP5K97LL3s8oB6FY"
+    "_id": "6bFGdrL+ZAjJuMf1S3WDAx"
   },
   {
     "__type__": "cc.Label",
@@ -1043,7 +1034,7 @@
       "__id__": 8
     },
     "component": "",
-    "_componentId": "cfefeLo7PlJfLaHXE1PPGMj",
+    "_componentId": "92acdz96t1G26LVTqCB/zgQ",
     "handler": "toggleBGM",
     "customEventData": ""
   },
@@ -1488,7 +1479,7 @@
       "__id__": 8
     },
     "component": "",
-    "_componentId": "cfefeLo7PlJfLaHXE1PPGMj",
+    "_componentId": "92acdz96t1G26LVTqCB/zgQ",
     "handler": "playClick",
     "customEventData": ""
   },
@@ -1516,36 +1507,6 @@
     "_id": "4cLjsCbCBDaYtugqflTEWb"
   },
   {
-    "__type__": "50f79m9q4VON5KCHJCtyESm",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 8
-    },
-    "_enabled": true,
-    "_id": "edZEKLGDhEXIbmLhB/SMKn"
-  },
-  {
-    "__type__": "e1ca2JnlmpMhaoOF/2wMUdC",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 8
-    },
-    "_enabled": true,
-    "_id": "0eu6ZEKaBNAIcKmZXtMO+b"
-  },
-  {
-    "__type__": "7c81aqoTxVGYq5oliCwyuqR",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 8
-    },
-    "_enabled": true,
-    "_id": "91kktYhFNGsqnln/SkN5Y1"
-  },
-  {
     "__type__": "cc.Node",
     "_name": "BaseRotateNode",
     "_objFlags": 0,
@@ -1557,10 +1518,10 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 37
+        "__id__": 34
       },
       {
-        "__id__": 38
+        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -1611,7 +1572,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 33
     },
     "_enabled": true,
     "_materials": [
@@ -1639,15 +1600,15 @@
     "_id": "6fqhQNMQhASYxgqOMgjNdm"
   },
   {
-    "__type__": "6bd5eT7Ya5KG7jyE0+AJlHd",
+    "__type__": "779b7V3405By4pq+rRM70/3",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 33
     },
     "_enabled": true,
     "speed": 60,
-    "_id": "46mSq3QlZG5YbS6129zFwz"
+    "_id": "39xsdgABxIrJeHWIZD2gp0"
   },
   {
     "__type__": "cc.Node",
@@ -1661,10 +1622,10 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 40
+        "__id__": 37
       },
       {
-        "__id__": 41
+        "__id__": 38
       }
     ],
     "_prefab": null,
@@ -1715,7 +1676,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 36
     },
     "_enabled": true,
     "_materials": [
@@ -1743,15 +1704,15 @@
     "_id": "5cRyThUExK76JWvUOp6GEH"
   },
   {
-    "__type__": "9db47ShipFJF6dphgN6meJl",
+    "__type__": "839a2XCPzNPEpY4lm7UXqwF",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 36
     },
     "_enabled": true,
     "speed": 60,
-    "_id": "29q69+G6tBjYLOSeycm3SK"
+    "_id": "fdYXzdVGtLdZfxMMXCU11l"
   },
   {
     "__type__": "cc.Canvas",
