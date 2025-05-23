@@ -3878,9 +3878,15 @@
     "node": {
       "__id__": 82
     },
-    "_enabled": false,
-    "_defaultClip": null,
-    "_clips": [],
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "d0827e57-a649-46ef-9cda-ef8e68cc5015"
+    },
+    "_clips": [
+      {
+        "__uuid__": "d0827e57-a649-46ef-9cda-ef8e68cc5015"
+      }
+    ],
     "playOnLoad": true,
     "_id": "9fudMcyU5MyZ+purAYAqGE"
   },
