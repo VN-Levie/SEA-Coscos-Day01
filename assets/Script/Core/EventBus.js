@@ -4,6 +4,8 @@ class EventBus {
     constructor() {
         this._emitter = new EventEmitter();
         this._emitter.setMaxListeners(100);
+        console.log('EventBus initialized with max listeners set to 100');
+        
     }
 
     emit(...args) {
