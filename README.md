@@ -66,3 +66,17 @@ SEA-Coscos-Project/
 
 * **Engine**: cocos2d-html5
 * **Cocos Creator Version**: 2.1.3
+
+---
+
+## Git Commit Messages for Line Ending Normalization
+
+If you see changes in `.meta` files with no actual content difference, it's usually due to end-of-line (EOL) normalization or just because the Cocos Engine touched them for some reason. This is common when switching between operating systems or editors that handle line endings differently (e.g., Windows vs. Unix/Linux).
+
+Use one of these commit messages for clarity:
+
+```text
+chore: normalize .meta files (line ending only, no content change)
+
+chore: no content changes, only line ending normalization in .meta files
+```
