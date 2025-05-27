@@ -1,5 +1,5 @@
-const EventBus = require('Core/EventBus');
-const PopupType = require('Enum/PopupType');
+const EventBus = require('../Core/EventBus');
+const PopupType = require('../Enum/PopupType');
 
 let LobbyController = cc.Class({
     extends: cc.Component,

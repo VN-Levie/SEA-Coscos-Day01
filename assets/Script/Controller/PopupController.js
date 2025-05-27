@@ -1,12 +1,12 @@
-const EventBus = require('Core/EventBus');
-const PopupType = require('Enum/PopupType');
+const EventBus = require('../Core/EventBus');
+const PopupType = require('../Enum/PopupType');
 
 let PopupController = cc.Class({
     extends: cc.Component,
 
     properties: {
-        SettingPopup: require('Popup/SettingPopup'),
-        RankingPopup: require('Popup/RankingPopup'),
+        SettingPopup: require('../Popup/SettingPopup'),
+        RankingPopup: require('../Popup/RankingPopup'),
     },
 
     onLoad() {

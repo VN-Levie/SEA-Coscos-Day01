@@ -15,7 +15,10 @@
     "subContext": ""
   },
   "encryptJs": true,
-  "excludeScenes": [],
+  "excludeScenes": [
+    "b9791971-fb56-4db3-a237-8607d1fb95d4",
+    "b6c74379-5256-49cf-8b3b-224e6893892e"
+  ],
   "fb-instant-games": {},
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
@@ -36,7 +39,7 @@
     "zip": false
   },
   "startScene": "36081268-a082-4493-bfc6-86359c5ae7b7",
-  "title": "hello_world",
+  "title": "MyFisrtGame",
   "webOrientation": "auto",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",

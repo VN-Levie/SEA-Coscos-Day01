@@ -1,41 +1,44 @@
-const EventEmitter = require('events');
-
 class EventBus {
     constructor() {
-        this._emitter = new EventEmitter();
-        this._emitter.setMaxListeners(100);
-        console.log('EventBus initialized with max listeners set to 100');
-        
+        this._emitter = new cc.EventTarget();
+        console.log('EventBus (using cc.EventTarget) initialized.');
     }
 
     emit(...args) {
-        this._emitter.emit(...args);
+        if (args.length > 0) {
+            this._emitter.emit(...args);
+        } else {
+            console.warn("EventBus.emit() called without arguments.");
+        }
     }
 
     on(event, listener, context = null) {
-        if (context) {
-            this._emitter.on(event, listener.bind(context));
-        } else {
-            this._emitter.on(event, listener);
-        }
+        this._emitter.on(event, listener, context);
     }
 
     once(event, listener, context = null) {
-        if (context) {
-            this._emitter.once(event, listener.bind(context));
-        } else {
-            this._emitter.once(event, listener);
-        }
+        this._emitter.once(event, listener, context);
     }
 
-    off(event, listener) {
-        this._emitter.removeListener(event, listener);
+    off(event, listener, context = null) {
+        this._emitter.off(event, listener, context);
     }
+
+
 
     removeAll(event) {
-        this._emitter.removeAllListeners(event);
+        if (typeof event === 'string') {
+            this._emitter.removeAllListeners(event.toString());
+        } else if (event && typeof event === 'object') {
+            this._emitter.targetOff(event);
+        } else if (!event) {
+            cc.warn("EventBus.removeAll: Called without an argument or with a falsy one. cc.EventTarget does not support removing all listeners for all events globally in this manner. If you intend to remove listeners for a specific event, pass the event name (string). If for a specific target, pass the target object.");
+        } else {
+            cc.warn(`EventBus.removeAll: Invalid argument type for 'event'. Expected string or target object. Received: ${typeof event}`);
+        }
     }
 }
 
-// Export **instance** trực tiếp, dùng rất gọn:
-module.exports = new EventBus();
+
+const eventBusInstance = new EventBus();
+module.exports = eventBusInstance;

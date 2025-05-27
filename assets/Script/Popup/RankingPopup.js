@@ -4,7 +4,7 @@ cc.Class({
     properties: {
         rankingTable: {
             default: null,
-            type: require('RankingTableController')
+            type: require('../Controller/RankingTableController')
         },
         data: {
             default: [],
