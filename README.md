@@ -21,7 +21,7 @@ This project is a basic game template created with Cocos Creator version 2.1.3. 
 SEA-Coscos-Project/
 ├── README.md
 ├── assets/
-│   ├── Amimation/              # Animation files
+│   ├── Amimations/             # Animation files
 │   │   ├── CharacterBreathingAmin.anim
 │   │   ├── FadeAmin.anim
 │   │   ├── FlashAmin.anim
@@ -30,6 +30,7 @@ SEA-Coscos-Project/
 │   │   ├── PlayButtonAnim.anim
 │   │   ├── PlayButtonAnimNew.anim
 │   │   ├── QuestLight.anim
+│   │   ├── RankingIconAmin.anim
 │   │   ├── SelectedMenuItem.anim
 │   │   ├── SettingAnim.anim
 │   │   ├── SettingsAnimOverlay.anim
@@ -39,12 +40,20 @@ SEA-Coscos-Project/
 │   │   ├── Alata-Regular.ttf
 │   │   ├── JosefinSans-Bold SDF.asset
 │   │   └── JosefinSans-Bold.ttf
+│   ├── Prefabs/                # Prefab files
+│   │   └── RankingItem.prefab
 │   ├── RealCombat/             # Real Combat assets
 │   │   └── May21/              # May 21 assets
-│   ├── Scene/                  # Scene files
+│   ├── Research/               # Research assets
+│   │   ├── Scene/
+│   │   └── Script/
+│   ├── Scene/                  # Game scene files
 │   │   └── Lobby.fire
 │   ├── Script/                 # Script files
-│   │   └── SoundController.js
+│   │   ├── Controller/         # Controller scripts
+│   │   ├── Core/               # Core scripts
+│   │   ├── Enum/               # Enum definitions
+│   │   └── Pupop/              # Popup related scripts
 │   ├── Sound/                  # Sound files
 │   │   ├── bgm.mp3
 │   │   ├── click.mp3
@@ -53,8 +62,16 @@ SEA-Coscos-Project/
 │       ├── Background/
 │       ├── Character/
 │       └── Component/
+├── library/                    # Build cache
+├── local/                      # Local settings
+├── packages/                   # Extension packages
 ├── researchs/                  # Research files
-│   └── may21/                  # May 21 research
+│   ├── may21/                  # May 21 research
+│   └── may27/                  # May 27 research
+├── screenshot/                 # Screenshots
+│   └── screenshot.png
+├── settings/                   # Project settings
+├── temp/                       # Temporary files
 ├── creator.d.ts
 ├── jsconfig.json
 ├── project.json
