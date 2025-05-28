@@ -87,7 +87,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 305
+        "__id__": 307
       }
     ],
     "_prefab": null,
@@ -171,7 +171,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 361.1325933781109
+      "z": 623.5382907247958
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -12874,9 +12874,6 @@
     "_children": [
       {
         "__id__": 291
-      },
-      {
-        "__id__": 297
       }
     ],
     "_active": true,
@@ -12927,7 +12924,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PlayButton",
+    "_name": "PlayButtonMark",
     "_objFlags": 0,
     "_parent": {
       "__id__": 290
@@ -12937,14 +12934,79 @@
         "__id__": 292
       },
       {
-        "__id__": 294
+        "__id__": 298
       }
     ],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 296
+        "__id__": 306
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 300,
+      "height": 120
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -40,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "groupIndex": 0,
+    "_id": "d6nLkEQaNGCIOUebH64tJ3"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "PlayButton",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 291
+    },
+    "_children": [
+      {
+        "__id__": 293
+      },
+      {
+        "__id__": 295
+      }
+    ],
+    "_active": true,
+    "_level": 6,
+    "_components": [
+      {
+        "__id__": 297
       }
     ],
     "_prefab": null,
@@ -12968,7 +13030,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 240,
+      "x": 260,
       "y": 0,
       "z": 0
     },
@@ -12995,14 +13057,14 @@
     "_name": "SwordsIcon",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 291
+      "__id__": 292
     },
     "_children": [],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 293
+        "__id__": 294
       }
     ],
     "_prefab": null,
@@ -13053,7 +13115,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 292
+      "__id__": 293
     },
     "_enabled": true,
     "_materials": [
@@ -13085,14 +13147,14 @@
     "_name": "PlayLabel",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 291
+      "__id__": 292
     },
     "_children": [],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 295
+        "__id__": 296
       }
     ],
     "_prefab": null,
@@ -13143,7 +13205,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 294
+      "__id__": 295
     },
     "_enabled": true,
     "_materials": [
@@ -13175,7 +13237,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 291
+      "__id__": 292
     },
     "_enabled": true,
     "_materials": [
@@ -13207,24 +13269,24 @@
     "_name": "PlayButtonOverlay",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 290
+      "__id__": 291
     },
     "_children": [
       {
-        "__id__": 298
+        "__id__": 299
       },
       {
-        "__id__": 300
+        "__id__": 301
       }
     ],
     "_active": true,
-    "_level": 5,
+    "_level": 6,
     "_components": [
       {
-        "__id__": 303
+        "__id__": 304
       },
       {
-        "__id__": 304
+        "__id__": 305
       }
     ],
     "_prefab": null,
@@ -13248,7 +13310,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 240,
+      "x": 260,
       "y": 0,
       "z": 0
     },
@@ -13275,14 +13337,14 @@
     "_name": "SwordsIconOverlay",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 297
+      "__id__": 298
     },
     "_children": [],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 299
+        "__id__": 300
       }
     ],
     "_prefab": null,
@@ -13333,7 +13395,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 298
+      "__id__": 299
     },
     "_enabled": true,
     "_materials": [
@@ -13365,17 +13427,17 @@
     "_name": "PlayLabelOverlay",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 297
+      "__id__": 298
     },
     "_children": [],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 301
+        "__id__": 302
       },
       {
-        "__id__": 302
+        "__id__": 303
       }
     ],
     "_prefab": null,
@@ -13426,7 +13488,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 300
+      "__id__": 301
     },
     "_enabled": true,
     "_materials": [
@@ -13458,7 +13520,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 300
+      "__id__": 301
     },
     "_enabled": true,
     "_color": {
@@ -13481,7 +13543,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 297
+      "__id__": 298
     },
     "_enabled": true,
     "_materials": [
@@ -13513,7 +13575,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 297
+      "__id__": 298
     },
     "_enabled": true,
     "_defaultClip": {
@@ -13526,6 +13588,26 @@
     ],
     "playOnLoad": true,
     "_id": "09rFZhE25EHbNEebflrwZv"
+  },
+  {
+    "__type__": "cc.Mask",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 291
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ],
+    "_spriteFrame": null,
+    "_type": 0,
+    "_segments": 64,
+    "_N$alphaThreshold": 0,
+    "_N$inverted": false,
+    "_id": "77JpxGVaRPKrEzMSQ0+vsb"
   },
   {
     "__type__": "cc.Canvas",
