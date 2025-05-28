@@ -15,7 +15,12 @@ let LobbyController = cc.Class({
 
     onClickRanking() {
         EventBus.emit('SHOW_POPUP', PopupType.RANKING);
-    }
+    },
+
+    onClickStartGame() {
+        console.log("Start Game button clicked");
+        EventBus.emit(LoadingEvent.LOAD_SCENE, "GameRoom");
+    },
 });
 
 module.exports = LobbyController;

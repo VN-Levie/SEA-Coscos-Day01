@@ -11,6 +11,7 @@ cc.Class({
     },
 
     onLoad() {
+        console.log("LoadingComponent onLoad");
         this.slider.node.active = false;
         this.loadingCircle.active = false;
         this._lastPercent = -1;
@@ -30,9 +31,11 @@ cc.Class({
     },
 
     preloadScene(sceneName) {
+        console.log(`Preloading scene: ${sceneName}`);
+        this.node.opacity = 255;
         this.slider.node.active = true;
         this.loadingCircle.active = true;
-        this.node.opacity = 255;
+
 
         cc.director.preloadScene(sceneName, (completedCount, totalCount) => {
             let percent = Math.floor((completedCount / totalCount) * 100);
@@ -43,10 +46,15 @@ cc.Class({
                 this.progressLabel.string = `Loading... ${percent}% (${completedCount}/${totalCount})`;
             }
         }, () => {
-            cc.tween(this.node)
-                .to(0.75, { opacity: 0 })
-                .call(() => cc.director.loadScene(sceneName))
-                .start();
+            this.node.runAction(cc.fadeOut(1000));
+            setTimeout(() => {
+                cc.director.loadScene(sceneName);
+            }, 750);
+
+            console.log(`Scene ${sceneName} loaded successfully.`);
+
         });
     },
+
+
 });
