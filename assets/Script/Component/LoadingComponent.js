@@ -6,16 +6,20 @@ cc.Class({
 
     properties: {
         loadingCircle: cc.Node,
+        blackScreen: cc.Node,
         progressLabel: cc.Label,
         slider: cc.Slider,
     },
 
     onLoad() {
+
         console.log("LoadingComponent onLoad");
         this.slider.node.active = false;
         this.loadingCircle.active = false;
         this._lastPercent = -1;
         this.rotateCircle();
+        this.blackScreen.active = true;
+        this.blackScreen.opacity = 0;
         EventBus.on(LoadingEvent.LOAD_SCENE, this.preloadScene, this);
     },
 
@@ -46,10 +50,16 @@ cc.Class({
                 this.progressLabel.string = `Loading... ${percent}% (${completedCount}/${totalCount})`;
             }
         }, () => {
-            this.node.runAction(cc.fadeOut(1000));
-            setTimeout(() => {
-                cc.director.loadScene(sceneName);
-            }, 750);
+
+            cc.tween(this.blackScreen)
+                .to(1, { opacity: 255 })
+                .call(() => {
+                    cc.director.loadScene(sceneName);
+                })
+                .start();
+
+
+
 
             console.log(`Scene ${sceneName} loaded successfully.`);
 
