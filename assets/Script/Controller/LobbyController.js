@@ -8,14 +8,11 @@ let LobbyController = cc.Class({
     onLoad() {
         LobbyController.instance = this;
     },
-
-    onClickSetting() {
-        EventBus.emit('SHOW_POPUP', PopupType.SETTING);
+  
+    onClickStartGame() {
+        console.log("Start Game button clicked");
+        EventBus.emit(LoadingEvent.LOAD_SCENE, "GameRoom");
     },
-
-    onClickRanking() {
-        EventBus.emit('SHOW_POPUP', PopupType.RANKING);
-    }
 });
 
 module.exports = LobbyController;

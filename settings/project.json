@@ -3,6 +3,10 @@
   "collision-matrix": [
     [
       true
+    ],
+    [
+      false,
+      true
     ]
   ],
   "design-resolution-height": 720,
@@ -21,7 +25,8 @@
   "fit-height": true,
   "fit-width": true,
   "group-list": [
-    "default"
+    "default",
+    "MobGroup"
   ],
   "last-module-event-record-time": 1748373098688,
   "simulator-orientation": false,
