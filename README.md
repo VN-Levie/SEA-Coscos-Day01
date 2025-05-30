@@ -18,10 +18,10 @@ This project is a basic game template created with Cocos Creator version 2.1.3. 
 ## Project Structure
 
 ```bash
-SEA-Coscos-Project/
+NewProject_3/
 ├── README.md
 ├── assets/
-│   ├── Amimations/             # Animation files
+│   ├── Animations/             # Animation files
 │   │   ├── CharacterBreathingAmin.anim
 │   │   ├── FadeAmin.anim
 │   │   ├── FlashAmin.anim
@@ -53,7 +53,7 @@ SEA-Coscos-Project/
 │   │   ├── Controller/         # Controller scripts
 │   │   ├── Core/               # Core scripts
 │   │   ├── Enum/               # Enum definitions
-│   │   └── Pupop/              # Popup related scripts
+│   │   └── Popup/              # Popup related scripts
 │   ├── Sound/                  # Sound files
 │   │   ├── bgm.mp3
 │   │   ├── click.mp3
