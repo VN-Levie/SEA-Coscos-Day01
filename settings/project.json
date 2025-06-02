@@ -6,7 +6,13 @@
     ],
     [
       false,
+      true,
       true
+    ],
+    [
+      false,
+      true,
+      false
     ]
   ],
   "design-resolution-height": 720,
@@ -26,7 +32,8 @@
   "fit-width": true,
   "group-list": [
     "default",
-    "MobGroup"
+    "MobGroup",
+    "Bullet"
   ],
   "last-module-event-record-time": 1748373098688,
   "simulator-orientation": false,
@@ -34,7 +41,7 @@
     "height": 640,
     "width": 960
   },
-  "start-scene": "41d8abe7-3a06-4a38-add6-4a0dfcb56ff5",
+  "start-scene": "03860532-9094-43c1-9bf6-fc4254bb2d73",
   "use-customize-simulator": true,
   "use-project-simulator-setting": false
 }

@@ -12,6 +12,8 @@ cc.Class({
         timer: { default: 0, type: cc.Integer },
         mob: { default: null, type: cc.Prefab },
         mobs: [],
+        defender: { default: null, type: cc.Prefab },
+        defenders: [],
         mobCount: { default: 50, type: cc.Integer },
         lastLane: { default: 0, type: cc.Integer },
         laneCount: { default: 3, type: cc.Integer },
@@ -23,6 +25,10 @@ cc.Class({
         this.updateTimerLabel();
         this.generateMobs(this.mobCount);
         this.spawnTimer = 0;
+        cc.director.getCollisionManager().enabled = true;
+        this.generateDefenders();
+        // cc.director.getPhysicsManager().enabled = true;
+        // cc.director.getCollisionManager().enabledDebugDraw = true;
     },
     update(dt) {
         if (this.timer > 0) {
@@ -38,6 +44,14 @@ cc.Class({
             this.spawnTimer = this.spawnInterval;
 
         }
+        let activeMobs = this.mobs.filter(mob => mob.active);
+        if (activeMobs.length > 0) {
+            this.defenders.forEach(defender => {
+                if (!defender.active) {
+                    defender.active = true;
+                }
+            });
+        }
     },
     trySpawnMob() {
         let activeMobs = this.mobs.filter(mob => mob.active);
@@ -52,12 +66,12 @@ cc.Class({
 
         }
         let laneIndex = this.getLane(this.lastLane);
-        let mob = this.mobs.find(mob => !mob.active && mob.getComponent('MobController').status === MobStatus.NONE);
+        let mob = this.mobs.find(mob => !mob.active && mob.getComponent('MobComponent').status === MobStatus.NONE);
         if (!mob) return;
-        let mobController = mob.getComponent('MobController');
+        let MobComponent = mob.getComponent('MobComponent');
         mob.setPosition(this.getLanePosition(laneIndex));
         mob.active = true;
-        mobController.status = MobStatus.MOVING;
+        MobComponent.status = MobStatus.MOVING;
     },
     getLane(lastLane) {
         let laneIndex = Math.floor(Math.random() * this.laneCount);
@@ -84,6 +98,32 @@ cc.Class({
             mob.parent = this.node;
             mob.active = false;
             this.mobs.push(mob);
+        }
+    },
+    generateDefenders() {
+        this.defenders.forEach(d => d.destroy && d.destroy());
+        this.defenders = [];
+
+        let x = GAME_AREA.bottomLeft.x + 100;
+        let xList = [
+          GAME_AREA.bottomLeft.x + 100,
+            GAME_AREA.bottomLeft.x + 250,
+            GAME_AREA.bottomLeft.x + 100
+        ];
+        let yList = [
+            GAME_AREA.bottomLeft.y + 150,
+            GAME_AREA.bottomLeft.y + 300,
+            GAME_AREA.bottomLeft.y + 450
+        ];
+        for (let i = 0; i < this.laneCount; i++) {
+            let defender = cc.instantiate(this.defender);
+            defender.active = false;
+            defender.parent = this.node;
+            defender.setPosition(cc.v2( xList[i], yList[i]));
+            console.log(`Defender position: ${defender.x}, ${defender.y}`);
+            // defender.getComponent('DefenderComponent').node.group = "DefenderGroup";
+
+            this.defenders.push(defender);
         }
     },
     updateTimerLabel() {
