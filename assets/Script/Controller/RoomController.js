@@ -73,7 +73,7 @@ cc.Class({
         let laneIndex = this.getLane(this.lastLane);
         let mob = this.mobs.find(mob => !mob.active && mob.getComponent('MobComponent') && mob.getComponent('MobComponent').stateMachine.can('spawn'));
         if (!mob) {
-            //WIn
+            //TODO: Check điều kiện thắng
             console.warn("No available mob to spawn");
             return;
         }
