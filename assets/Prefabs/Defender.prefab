@@ -208,7 +208,7 @@
   },
   {
     "__type__": "cc.Sprite",
-    "_name": "",
+    "_name": "Bar<Sprite>",
     "_objFlags": 0,
     "node": {
       "__id__": 3
@@ -251,7 +251,7 @@
   },
   {
     "__type__": "cc.Sprite",
-    "_name": "",
+    "_name": "HealthBar<Sprite>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -352,12 +352,17 @@
     "bulletPrefab": {
       "__uuid__": "fe13b31f-1c71-4712-995c-d7d62471c048"
     },
+    "explosionPrefab": {
+      "__uuid__": "7a794f16-3266-4468-b933-30f67c700aec"
+    },
     "shootInterval": 0.5,
     "shootTimer": 0,
-    "health": 100,
-    "maxHealth": 100,
+    "health": 1000,
+    "maxHealth": 0,
     "damage": 1,
     "range": 1500,
+    "explosionRange": 600,
+    "respawnTime": 5,
     "healthBar": {
       "__id__": 7
     },

@@ -5,13 +5,15 @@ cc.Class({
     extends: cc.Component,
     properties: {
         bulletPrefab: cc.Prefab,
+        explosionPrefab: cc.Prefab,
         shootInterval: 0.5,
         shootTimer: 0,
-        health: 100,
-        maxHealth: 100,
+        health: 1000,
+        maxHealth: 1000,
         damage: 20,
         range: 800,
-        //ProgressHeathBar
+        explosionRange: 600,
+        respawnTime: 5,
         healthBar: {
             default: null,
             type: cc.ProgressBar
@@ -19,13 +21,15 @@ cc.Class({
     },
 
     onLoad() {
-
+        this.explosionRange = 600;
         this.damage = 10;
-        this.range = 1500;
+        this.range = 1000;
         this.maxHealth = this.health;
         this.stateMachine = DefenderStateMachine.createStateMachine(this);
         this.shootTimer = this.shootInterval;
         this.targets = [];
+        this.isRespawning = false;
+        this.originalOpacity = 255;
 
         this.scheduleOnce(() => {
             this.initializePosition();
@@ -38,7 +42,7 @@ cc.Class({
         this._idleScaleY = 0.7;
         this.deltaY = 6.91;
         this.deltaScaleY = 0.75 - 0.7;
-        // this.node.scaleY = this._idleScaleY;
+
         this.node.scaleY = 0;
         this.setupIdleAnimation();
     },
@@ -104,6 +108,7 @@ cc.Class({
         }
 
         this.updateTargeting();
+        this.checkMobCollision();
     },
 
     updateTargeting() {
@@ -136,6 +141,53 @@ cc.Class({
         return approachingMobs;
     },
 
+    checkMobCollision() {
+        if (this.isRespawning || this.stateMachine.state === 'destroyed') return;
+
+        let roomController = this.node.parent.getComponent('RoomController');
+        if (!roomController) return;
+
+        let activeMobs = roomController.mobs.filter(m => m.active);
+
+        for (let mob of activeMobs) {
+            let mobComponent = mob.getComponent('MobComponent');
+            if (mobComponent && this.isCollidingWithMob(mob)) {
+                this.takeDamageFromMob(mobComponent.getDamageValue());
+                break;
+            }
+        }
+    },
+
+    isCollidingWithMob(mobNode) {
+        let defenderWorldPos = CoordinateUtils.getWorldPosition(this.node);
+        let mobWorldPos = CoordinateUtils.getWorldPosition(mobNode);
+
+        let laneToleranceY = 60;
+        let verticalDistance = Math.abs(mobWorldPos.y - defenderWorldPos.y);
+
+        if (verticalDistance > laneToleranceY) {
+            return false;
+        }
+
+        let defenderBox = {
+            left: defenderWorldPos.x - this.node.width * 0.4,
+            right: defenderWorldPos.x + this.node.width * 0.4,
+            top: defenderWorldPos.y + this.node.height * 0.4,
+            bottom: defenderWorldPos.y - this.node.height * 0.4
+        };
+
+        let mobBox = {
+            left: mobWorldPos.x - mobNode.width * 0.4,
+            right: mobWorldPos.x + mobNode.width * 0.4,
+            top: mobWorldPos.y + mobNode.height * 0.4,
+            bottom: mobWorldPos.y - mobNode.height * 0.4
+        };
+
+        return !(defenderBox.right < mobBox.left ||
+            defenderBox.left > mobBox.right ||
+            defenderBox.top < mobBox.bottom ||
+            defenderBox.bottom > mobBox.top);
+    },
 
     onActivate() {
         this.node.active = true;
@@ -150,6 +202,9 @@ cc.Class({
     },
 
     onTakeDamage() {
+
+        //this.playDamageEffect();
+        this.updateHealthBar();
     },
 
     onRepair() {
@@ -176,13 +231,21 @@ cc.Class({
 
     onDestroy() {
         console.log('Defender destroyed');
-        this.node.active = false;
+        this.createExplosionEffect();
+        this.explodeAllMobsInLine();
+        this.startRespawning();
     },
 
     onReset() {
         this.health = this.maxHealth;
         this.targets = [];
-        this.node.active = false;
+        this.updateHealthBar();
+
+        this.scheduleOnce(() => {
+            if (this.stateMachine.can('activate')) {
+                this.stateMachine.activate();
+            }
+        }, 0.5);
     },
 
     shoot() {
@@ -223,33 +286,193 @@ cc.Class({
         }
     },
 
-    repair() {
-        if (this.stateMachine.can('repair')) {
-            this.stateMachine.repair();
+    takeDamageFromMob(damage) {
+        console.log(`Defender taking ${damage} damage from mob`);
+        this.health -= damage;
+        this.health = Math.max(0, this.health);
+
+        //this.playDamageEffect();
+        this.updateHealthBar();
+        this.createDamageNumber(damage);
+
+        if (this.health <= 0) {
+            if (this.stateMachine.can('destroy')) {
+                this.stateMachine.destroy();
+            }
+        } else if (this.stateMachine.can('takeDamage')) {
+            this.stateMachine.takeDamage();
         }
     },
 
-    upgrade() {
-        if (this.stateMachine.can('upgrade')) {
-            this.stateMachine.upgrade();
+    playDamageEffect() {
+        let sprite = this.node.getComponent(cc.Sprite);
+        if (sprite) {
+            let originalColor = sprite.node.color.clone();
+            sprite.node.color = cc.Color.RED;
+            cc.tween(sprite.node)
+                .to(0.15, { color: originalColor })
+                .start();
+        }
 
-            this.scheduleOnce(() => {
-                if (this.stateMachine.can('finishUpgrade')) {
-                    this.stateMachine.finishUpgrade();
-                }
-            }, 2);
+        let originalPos = this.node.position.clone();
+        cc.tween(this.node)
+            .by(0.03, { x: 8 }, { easing: 'sineOut' })
+            .by(0.03, { x: -16 }, { easing: 'sineInOut' })
+            .by(0.03, { x: 12 }, { easing: 'sineInOut' })
+            .by(0.03, { x: -8 }, { easing: 'sineInOut' })
+            .by(0.03, { x: 4 }, { easing: 'sineIn' })
+            .to(0.05, { position: originalPos })
+            .start();
+
+        let originalScale = this.node.scale;
+        cc.tween(this.node)
+            .to(0.08, { scale: originalScale * 1.15 }, { easing: 'backOut' })
+            .to(0.12, { scale: originalScale }, { easing: 'backIn' })
+            .start();
+
+        this.createScreenShake();
+        this.createDamageNumber();
+    },
+
+    createScreenShake() {
+        let canvas = cc.find('Canvas');
+        if (canvas) {
+            let originalPos = canvas.position.clone();
+            cc.tween(canvas)
+                .by(0.04, { x: Math.random() * 12 - 6, y: Math.random() * 12 - 6 })
+                .by(0.04, { x: Math.random() * 8 - 4, y: Math.random() * 8 - 4 })
+                .by(0.04, { x: Math.random() * 4 - 2, y: Math.random() * 4 - 2 })
+                .to(0.06, { position: originalPos })
+                .start();
         }
     },
 
-    deactivate() {
-        if (this.stateMachine.can('deactivate')) {
-            this.stateMachine.deactivate();
+    createExplosionEffect() {
+        if (!this.explosionPrefab) return;
+
+        let bulletWorldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0));
+        let effectLayer = cc.find('Canvas/GameArea');
+        if (!effectLayer) {
+            effectLayer = this.node.parent;
         }
+
+        let effectLocalPos = effectLayer.convertToNodeSpaceAR(bulletWorldPos);
+        let effect = cc.instantiate(this.explosionPrefab);
+        effect.parent = effectLayer;
+        effect.setPosition(effectLocalPos);
     },
 
-    reset() {
+    explodeAllMobsInLine() {
+        let roomController = this.node.parent.getComponent('RoomController');
+        if (!roomController) return;
+
+        let defenderWorldPos = CoordinateUtils.getWorldPosition(this.node);
+        let mobsToDestroy = [];
+
+        roomController.mobs.forEach(mob => {
+            if (!mob.active) return;
+
+            let mobWorldPos = CoordinateUtils.getWorldPosition(mob);
+            let verticalDistance = Math.abs(mobWorldPos.y - defenderWorldPos.y);
+            let horizontalDistance = Math.abs(mobWorldPos.x - defenderWorldPos.x);
+
+            if (verticalDistance <= 60 && horizontalDistance <= this.explosionRange) {
+                mobsToDestroy.push(mob);
+            }
+        });
+
+        mobsToDestroy.forEach(mob => {
+            let mobComponent = mob.getComponent('MobComponent');
+            if (mobComponent && mobComponent.stateMachine.can('die')) {
+                mobComponent.stateMachine.die();
+            }
+        });
+
+        console.log(`Explosion destroyed ${mobsToDestroy.length} mobs in line`);
+    },
+
+    startRespawning() {
+        this.isRespawning = true;
+        this.node.opacity = 50;
+        this.health = 0;
+
+        let respawnProgress = 0;
+        let respawnTimer = 0;
+
+        let respawnUpdate = () => {
+            respawnTimer += 0.1;
+            respawnProgress = respawnTimer / this.respawnTime;
+
+            this.node.opacity = 50 + (respawnProgress * 205);
+            this.health = this.maxHealth * respawnProgress;
+            this.updateHealthBar();
+
+            if (respawnProgress >= 1) {
+                this.finishRespawning();
+                this.unschedule(respawnUpdate);
+            }
+        };
+
+        this.schedule(respawnUpdate, 0.1);
+    },
+
+    finishRespawning() {
+        this.isRespawning = false;
+        this.node.opacity = 255;
+        this.health = this.maxHealth;
+        this.updateHealthBar();
+
         if (this.stateMachine.can('reset')) {
             this.stateMachine.reset();
         }
-    }
+
+        let originalScale = this.node.scale;
+        cc.tween(this.node)
+            .to(0.2, { scale: originalScale * 1.2 }, { easing: 'backOut' })
+            .to(0.15, { scale: originalScale }, { easing: 'backIn' })
+            .start();
+    },
+
+    createDamageNumber(damage) {
+        let damageNode = new cc.Node('DamageText');
+        let labelComponent = damageNode.addComponent(cc.Label);
+        labelComponent.string = '-' + (damage || Math.floor(Math.random() * 20 + 10));
+        labelComponent.fontSize = 30;
+        labelComponent.node.color = cc.Color.RED;
+
+        damageNode.parent = this.node.parent;
+        let defenderWorldPos = CoordinateUtils.getWorldPosition(this.node);
+        let damageLocalPos = CoordinateUtils.worldToLocal(defenderWorldPos, this.node.parent);
+        damageNode.setPosition(damageLocalPos.x, damageLocalPos.y + this.node.height * 0.5);
+
+        cc.tween(damageNode)
+            .parallel(
+                cc.tween().by(1.0, { y: 50 }, { easing: 'quadOut' }),
+                cc.tween().to(1.0, { opacity: 0 }, { easing: 'quadIn' })
+            )
+            .call(() => {
+                damageNode.destroy();
+            })
+            .start();
+    },
+
+    updateHealthBar() {
+        if (this.healthBar) {
+            let healthPercent = this.health / this.maxHealth;
+            cc.tween(this.healthBar)
+                .to(0.2, { progress: healthPercent })
+                .start();
+
+
+            let healthBarNode = this.healthBar.node;
+            if (healthPercent < 0.3) {
+                healthBarNode.color = cc.Color.RED;
+            } else if (healthPercent < 0.6) {
+                healthBarNode.color = cc.Color.YELLOW;
+            } else {
+                healthBarNode.color = cc.Color.GREEN;
+            }
+        }
+    },
+
 });

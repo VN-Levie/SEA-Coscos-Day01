@@ -29,7 +29,7 @@ cc.Class({
         this.spawnTimer = 0;
         cc.director.getCollisionManager().enabled = true;
         this.generateDefenders();
-        cc.director.getPhysicsManager().enabled = true;
+        // cc.director.getPhysicsManager().enabled = true;
         // cc.director.getCollisionManager().enabledDebugDraw = true;
     },
 
