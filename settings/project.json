@@ -7,11 +7,18 @@
     [
       false,
       true,
+      true,
       true
     ],
     [
       false,
       true,
+      false
+    ],
+    [
+      false,
+      true,
+      false,
       false
     ]
   ],
@@ -33,7 +40,8 @@
   "group-list": [
     "default",
     "MobGroup",
-    "Bullet"
+    "Bullet",
+    "DefenderGroup"
   ],
   "last-module-event-record-time": 1748373098688,
   "simulator-orientation": false,
